@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0txqfwfxqtsj"]
+[gd_scene load_steps=12 format=3 uid="uid://c0txqfwfxqtsj"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_qtccd"]
 
@@ -31,6 +31,9 @@ albedo_color = Color(0.223529, 0.423529, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idh1n"]
 albedo_color = Color(0.639216, 0.164706, 0.294118, 0.486275)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xro5"]
+albedo_color = Color(0.452396, 0.138421, 0.904876, 1)
 
 [node name="World" type="Node3D"]
 
@@ -80,3 +83,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7524, 1.50983, -9.3664)
 material_override = SubResource("StandardMaterial3D_idh1n")
 use_collision = true
 size = Vector3(7.68219, 4.01965, 8.32007)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53135, 0, -20.7618)
+material_override = SubResource("StandardMaterial3D_4xro5")
+use_collision = true
+radius = 4.17158
+height = 8.26334
