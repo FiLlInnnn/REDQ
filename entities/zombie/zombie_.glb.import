@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/zombie_.glb-78a878d6d1a803fafb4ca0652a93deb8.
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="CharacterBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
