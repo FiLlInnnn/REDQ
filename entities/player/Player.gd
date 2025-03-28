@@ -5,6 +5,7 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.002
+const HIT_STAGGER = 8.0
 
 #bob
 const BOB_FREQ = 2.0 
@@ -15,6 +16,8 @@ var t_bob = 0.0
 const BASE_FOV = 100.0
 const FOV_CHANGE = 1.5
 
+#signal
+signal player_hit
 
 var gravity = 9.8
 
@@ -89,3 +92,9 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+	
+
+
+func hit(dir):
+	emit_signal("player_hit")
+	velocity += dir * HIT_STAGGER
