@@ -3,6 +3,7 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var player_detected = false
+var health = 10
 
 const SPEED = 3.0
 const ATTACK_RANGE = 2
@@ -18,6 +19,8 @@ const DETECTION_RADIUS = 10.0
 
 func _ready():
 	player = get_node(player_path)
+	print("Player path:", player_path)
+	print("Player found:", player)
 	state_machine = anim_tree.get("parameters/playback")
 	 
 	detection_area.body_entered.connect(_on_player_entered)
@@ -26,6 +29,7 @@ func _ready():
 	 
 
 func _process(delta):
+	
 	if not player_detected:
 		velocity =Vector3.ZERO
 		return
@@ -59,14 +63,27 @@ func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
 func _on_player_entered(body):
-	if body.name == "Player":
+	if body.name == "player":
 		player_detected = true
+		print("Player entered detection area")
 
 func _on_player_exited(body):
-	if body.name == "Player":
+	if body.name == "player":
 		player_detected = false
 
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)
+
+
+func _on_area_3d_body_part_hit(dam):
+	health -= dam
+	if  health <= 0:
+		velocity = Vector3.ZERO
+		nav_agent.set_target_position(global_transform.origin)
+		set_process(false)
+		anim_tree.set("parameters/conditions/dead", true)
+		await get_tree().create_timer(4.0).timeout
+		queue_free()
+	
