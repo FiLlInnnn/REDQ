@@ -29,6 +29,7 @@ var instance
 @onready var camera = $Head/Camera3D
 @onready var gun_anim = $Head/Camera3D/gun2/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/gun2/RayCast3D
+@onready var pause_menu = $pause_menu
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -39,10 +40,6 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
-
-func _process(delta):
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
 
 
 func _physics_process(delta: float) -> void:
@@ -117,3 +114,20 @@ func _headbob(time) -> Vector3:
 func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER
+
+
+func _input(event):
+	if event.is_action_pressed("exit"):
+		toggle_pause()
+
+
+func toggle_pause():
+	var is_paused = not get_tree().paused
+	get_tree().paused = is_paused
+	pause_menu.visible = is_paused  
+	
+	
+	if is_paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  
