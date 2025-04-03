@@ -74,9 +74,11 @@ script = ExtResource("3_ckxac")
 
 [node name="options_menu" parent="pause_menu" instance=ExtResource("4_tlgvh")]
 visible = false
+z_index = 2
 layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="pause_menu"]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,6 +136,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "MAIN MENU"
 
 [node name="Label" type="Label" parent="pause_menu"]
+z_index = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -150,6 +153,16 @@ text = "PAUSE MENU
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="pause_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.374139, 0.374139, 0.374139, 0.47451)
 
 [connection signal="pressed" from="pause_menu/VBoxContainer/start_game" to="pause_menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="pause_menu/VBoxContainer/options" to="pause_menu" method="_on_options_pressed"]

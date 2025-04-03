@@ -85,6 +85,7 @@ text = "MUTE
 "
 
 [node name="mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="back" type="Button" parent="."]
@@ -115,5 +116,4 @@ text = "BACK"
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/masterV" to="." method="_on_master_v_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/musicV" to="." method="_on_music_v_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX" to="." method="_on_sfx_value_changed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/mute" to="." method="_on_mute_toggled"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
