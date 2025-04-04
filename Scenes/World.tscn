@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c0txqfwfxqtsj"]
+[gd_scene load_steps=29 format=4 uid="uid://c0txqfwfxqtsj"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_fv0ce"]
 [ext_resource type="PackedScene" uid="uid://lxf2la4wc4lm" path="res://Scenes/Map.tscn" id="1_uc18m"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="4_nfpyx"]
 [ext_resource type="PackedScene" uid="uid://vlkob0pifpqu" path="res://entities/zombie/zombie_.tscn" id="5_4oq0q"]
 [ext_resource type="PackedScene" uid="uid://clhe4d02xrbqu" path="res://entities/player/player.tscn" id="7_6nf8i"]
+[ext_resource type="PackedScene" uid="uid://cho1pj3bgs262" path="res://entities/zombie/zombie_big_one.tscn" id="8_jnv77"]
+[ext_resource type="Script" path="res://scripts/victory_menu.gd" id="9_282ls"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x46kb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -73,6 +75,38 @@ points = PackedVector3Array(-2, 0.5, 3.5, -2, 0, 3.5, 2, 0, 3.5, 2, 0.5, 3.5, -2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p4rus"]
 points = PackedVector3Array(-1, 0, -6, -1, -0.5, -6, 1.5, -0.5, -6, 1.5, 0, -6, -1, 0, -2.5, -1, -0.5, -2.5, 1.5, -0.5, -2.5, 1.5, 0, -2.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8ra5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynmdb"]
+bg_color = Color(0.617454, 0.617455, 0.617454, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.223529)
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_me8x5"]
+bg_color = Color(0.355314, 0.355314, 0.355313, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.223529)
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pohfw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.223529)
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_fv0ce")
@@ -162,6 +196,10 @@ player_path = NodePath("../player")
 
 [node name="player" parent="Map/NavigationRegion3D" instance=ExtResource("7_6nf8i")]
 
+[node name="zombie_2" parent="Map/NavigationRegion3D" instance=ExtResource("8_jnv77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.16, 0.0905599, 21.9903)
+player_path = NodePath("../player")
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -177,4 +215,93 @@ offset_right = 2413.0
 offset_bottom = 1106.0
 color = Color(0.596078, 0, 0.0392157, 0.309804)
 
+[node name="victory_menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_282ls")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="victory_menu"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -54.0
+offset_right = 225.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="restart_game" type="Button" parent="victory_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w8ra5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ynmdb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_me8x5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pohfw")
+text = "RESTART GAME"
+
+[node name="exit_game" type="Button" parent="victory_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w8ra5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ynmdb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_me8x5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pohfw")
+text = "MAIN MENU"
+
+[node name="Label" type="Label" parent="victory_menu"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -294.0
+offset_right = 186.5
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 90
+text = "VICTORY!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="victory_menu"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.374139, 0.374139, 0.374139, 0.47451)
+
 [connection signal="player_hit" from="Map/NavigationRegion3D/player" to="." method="_on_player_player_hit"]
+[connection signal="pressed" from="victory_menu/VBoxContainer/restart_game" to="victory_menu" method="_on_restart_game_pressed"]
+[connection signal="pressed" from="victory_menu/VBoxContainer/exit_game" to="victory_menu" method="_on_exit_game_pressed"]
