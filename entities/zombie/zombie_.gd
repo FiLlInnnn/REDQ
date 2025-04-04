@@ -4,6 +4,7 @@ var player = null
 var state_machine
 var player_detected = false
 var health = 10
+var damage = 15
 
 const SPEED = 3.0
 const ATTACK_RANGE = 2
@@ -74,7 +75,7 @@ func _on_player_exited(body):
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
 		var dir = global_position.direction_to(player.global_position)
-		player.hit(dir)
+		player.hit(dir, damage)
 
 
 func _on_area_3d_body_part_hit(dam):

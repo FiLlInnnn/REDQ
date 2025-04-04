@@ -25,14 +25,19 @@ var gravity = 9.8
 var bullet = load("res://entities/bullet/bullet.tscn")
 var instance
 
+var hp = 100
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var gun_anim = $Head/Camera3D/gun2/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/gun2/RayCast3D
 @onready var pause_menu = $pause_menu
+@onready var dead_menu = $dead_menu
+@onready var hp_label = $CanvasLayer/HP_label
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hp_label.text = str(hp) + " HP"
 
 
 func _unhandled_input(event):
@@ -111,10 +116,22 @@ func _headbob(time) -> Vector3:
 	
 
 
-func hit(dir):
+func hit(dir, damage):
 	emit_signal("player_hit")
-	velocity += dir * HIT_STAGGER
+	hp -= damage
+	hp = max(hp, 0)
+	hp_label.text = str(hp) + " HP"
+	
+	if hp <= 0:
+		die()
+	else:
+		velocity += dir * HIT_STAGGER
 
+func die():
+	get_tree().paused = true
+	dead_menu.visible = true
+	hp_label.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
 	if event.is_action_pressed("exit"):
