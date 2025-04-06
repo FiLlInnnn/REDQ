@@ -29,11 +29,15 @@ var hp = 100
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+
 @onready var gun_anim = $Head/Camera3D/gun2/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/gun2/RayCast3D
-@onready var pause_menu = $pause_menu
-@onready var dead_menu = $dead_menu
-@onready var hp_label = $CanvasLayer/HP_label
+@onready var ami_ray = $Head/Camera3D/Aimray
+@onready var aim_ray_end = $Head/Camera3D/AimRayEnd
+
+@onready var pause_menu = $pause_menu_ui/pause_menu
+@onready var dead_menu = $dead_menu_ui/dead_menu
+@onready var hp_label = $player_ui/HP_label
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -93,13 +97,8 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	#shoot
-	if Input.is_action_pressed("shoot"):
-		if !gun_anim.is_playing():
-			gun_anim.play("shoot")
-			instance = bullet.instantiate()
-			instance.position = gun_barrel.global_position
-			instance.transform.basis = gun_barrel.global_transform.basis
-			get_parent().add_child(instance)
+	if Input.is_action_just_pressed("shoot"):
+		_shoot_pistol()
 	
 	
 	move_and_slide()
@@ -148,3 +147,18 @@ func toggle_pause():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  
+
+
+func _shoot_pistol():
+	if !gun_anim.is_playing():
+		gun_anim.play("shoot")
+		instance = bullet.instantiate()
+		instance.position = gun_barrel.global_position
+		get_parent().add_child(instance)
+		if ami_ray.is_colliding():
+			instance.set_velocity(ami_ray.get_collision_point())
+		else:
+			instance.set_velocity(aim_ray_end.global_position)
+		
+		
+		

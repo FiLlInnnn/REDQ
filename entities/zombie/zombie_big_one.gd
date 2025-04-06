@@ -88,7 +88,7 @@ func _on_area_3d_body_part_hit(dam):
 		
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 		get_tree().paused = true
-		var victory_menu = get_tree().current_scene.get_node("victory_menu")
+		var victory_menu = get_tree().current_scene.get_node("victory_menu_ui/victory_menu")
 		victory_menu.visible = true
 		
 		await get_tree().create_timer(4.0).timeout

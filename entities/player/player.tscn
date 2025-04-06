@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://clhe4d02xrbqu"]
+[gd_scene load_steps=15 format=3 uid="uid://clhe4d02xrbqu"]
 
 [ext_resource type="Script" path="res://entities/player/Player.gd" id="1_0qov8"]
 [ext_resource type="PackedScene" uid="uid://b481xxg7cawxg" path="res://entities/Gun/gun.tscn" id="2_uxl7l"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_ckxac"]
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="4_tlgvh"]
 [ext_resource type="Script" path="res://scripts/dead_menu.gd" id="5_nsjfv"]
+[ext_resource type="Script" path="res://scripts/player_ui.gd" id="6_qgfsh"]
+[ext_resource type="Texture2D" uid="uid://nwr87gdsb2a" path="res://textures/crosshair_v2.png" id="7_tjr50"]
+[ext_resource type="Texture2D" uid="uid://26kbctuxn070" path="res://textures/crosshair_hit_v2.png" id="8_sxgpr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_whugt"]
 
@@ -61,10 +64,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67983, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="gun2" parent="Head/Camera3D" instance=ExtResource("2_uxl7l")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.399392, -0.398335, -0.636837)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.210901, -0.398335, -0.636837)
 
-[node name="pause_menu" type="Control" parent="."]
+[node name="Aimray" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+target_position = Vector3(0, 0, -100)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="AimRayEnd" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.5)
+
+[node name="pause_menu_ui" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" type="Control" parent="pause_menu_ui"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,12 +88,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ckxac")
 
-[node name="options_menu" parent="pause_menu" instance=ExtResource("4_tlgvh")]
+[node name="options_menu" parent="pause_menu_ui/pause_menu" instance=ExtResource("4_tlgvh")]
 visible = false
 z_index = 2
 layout_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu_ui/pause_menu"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -94,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="start_game" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="start_game" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -108,7 +123,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "RESUME GAME"
 
-[node name="options" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="options" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -122,7 +137,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "OPTIONS"
 
-[node name="exit_game" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="exit_game" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -136,7 +151,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "MAIN MENU"
 
-[node name="Label" type="Label" parent="pause_menu"]
+[node name="Label" type="Label" parent="pause_menu_ui/pause_menu"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 5
@@ -155,7 +170,7 @@ text = "PAUSE MENU
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="pause_menu"]
+[node name="ColorRect" type="ColorRect" parent="pause_menu_ui/pause_menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,7 +180,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.374139, 0.374139, 0.374139, 0.47451)
 
-[node name="dead_menu" type="Control" parent="."]
+[node name="dead_menu_ui" type="CanvasLayer" parent="."]
+
+[node name="dead_menu" type="Control" parent="dead_menu_ui"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -175,7 +192,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_nsjfv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="dead_menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="dead_menu_ui/dead_menu"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -191,7 +208,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="restart" type="Button" parent="dead_menu/VBoxContainer"]
+[node name="restart" type="Button" parent="dead_menu_ui/dead_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -206,7 +223,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "RESTART
 "
 
-[node name="main_menu" type="Button" parent="dead_menu/VBoxContainer"]
+[node name="main_menu" type="Button" parent="dead_menu_ui/dead_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -220,7 +237,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "MAIN MENU"
 
-[node name="Label" type="Label" parent="dead_menu"]
+[node name="Label" type="Label" parent="dead_menu_ui/dead_menu"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -243,7 +260,7 @@ text = "YOU DIED
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="dead_menu"]
+[node name="ColorRect" type="ColorRect" parent="dead_menu_ui/dead_menu"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -254,9 +271,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.374139, 0.374139, 0.374139, 0.47451)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="player_ui" type="CanvasLayer" parent="."]
+layer = 0
+script = ExtResource("6_qgfsh")
 
-[node name="HP_label" type="Label" parent="CanvasLayer"]
+[node name="HP_label" type="Label" parent="player_ui"]
 offset_left = 1694.0
 offset_top = 31.0
 offset_right = 1844.0
@@ -266,8 +285,38 @@ text = "100 HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="pause_menu/VBoxContainer/start_game" to="pause_menu" method="_on_start_game_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/options" to="pause_menu" method="_on_options_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/exit_game" to="pause_menu" method="_on_exit_game_pressed"]
-[connection signal="pressed" from="dead_menu/VBoxContainer/restart" to="dead_menu" method="_on_restart_pressed"]
-[connection signal="pressed" from="dead_menu/VBoxContainer/main_menu" to="dead_menu" method="_on_main_menu_pressed"]
+[node name="TextureRect" type="TextureRect" parent="player_ui"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_tjr50")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="player_ui"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_sxgpr")
+
+[connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
+[connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/options" to="pause_menu_ui/pause_menu" method="_on_options_pressed"]
+[connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/exit_game" to="pause_menu_ui/pause_menu" method="_on_exit_game_pressed"]
+[connection signal="pressed" from="dead_menu_ui/dead_menu/VBoxContainer/restart" to="dead_menu_ui/dead_menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="dead_menu_ui/dead_menu/VBoxContainer/main_menu" to="dead_menu_ui/dead_menu" method="_on_main_menu_pressed"]
