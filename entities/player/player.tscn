@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="4_tlgvh"]
 [ext_resource type="Script" path="res://scripts/dead_menu.gd" id="5_nsjfv"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="6_qgfsh"]
-[ext_resource type="Texture2D" uid="uid://nwr87gdsb2a" path="res://textures/crosshair_v2.png" id="7_tjr50"]
+[ext_resource type="Texture2D" uid="uid://d1i2kdiwc61qc" path="res://textures/crosshair_fixed_v2.png" id="7_xybm5"]
 [ext_resource type="Texture2D" uid="uid://26kbctuxn070" path="res://textures/crosshair_hit_v2.png" id="8_sxgpr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_whugt"]
@@ -297,8 +297,8 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_tjr50")
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("7_xybm5")
+stretch_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="player_ui"]
 visible = false
