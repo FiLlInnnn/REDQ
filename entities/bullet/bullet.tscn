@@ -33,7 +33,7 @@ mesh = SubResource("BoxMesh_vutr8")
 surface_material_override/0 = SubResource("StandardMaterial3D_g7cvh")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.148076)
 target_position = Vector3(0, 0, -0.8)
 collision_mask = 2
 collide_with_areas = true

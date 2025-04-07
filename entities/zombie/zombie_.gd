@@ -3,6 +3,7 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var player_detected = false
+
 var health = 10
 var damage = 15
 
