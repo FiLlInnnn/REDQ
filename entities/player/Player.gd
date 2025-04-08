@@ -39,6 +39,8 @@ var hp = 100
 @onready var dead_menu = $dead_menu_ui/dead_menu
 @onready var hp_label = $player_ui/HP_label
 
+@onready var crosshair_hit = $player_ui/TextureRect2
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hp_label.text = str(hp) + " HP"
@@ -155,10 +157,15 @@ func _shoot_pistol():
 		instance = bullet.instantiate()
 		instance.position = gun_barrel.global_position
 		get_parent().add_child(instance)
+		
+		instance.connect("zombie_hit", Callable(self, "_on_zombie_hit"))
+		
 		if ami_ray.is_colliding():
 			instance.set_velocity(ami_ray.get_collision_point())
 		else:
 			instance.set_velocity(aim_ray_end.global_position)
-		
-		
-		
+
+func _on_zombie_hit():
+	crosshair_hit.visible = true
+	await get_tree().create_timer(0.05).timeout
+	crosshair_hit.visible = false

@@ -5,6 +5,9 @@ const LIFETIME = 1.0
 const RAY_LENGTH = 2.0
 
 var velocity = Vector3.ZERO
+var already_hit = false
+
+signal zombie_hit
 
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
@@ -58,11 +61,15 @@ func _physics_process(delta):
 
 func _handle_hit(result):
 	print("Zásah!", result.collider)
+	if already_hit: return
+	already_hit = true
+
 	mesh.visible = false
 	particles.global_position = result.position
 	particles.emitting = true
 
 	if result.collider.is_in_group("enemy"):
+		emit_signal("zombie_hit")
 		result.collider.hit()
 
 

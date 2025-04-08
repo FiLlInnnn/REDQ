@@ -314,6 +314,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_sxgpr")
+stretch_mode = 3
 
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/options" to="pause_menu_ui/pause_menu" method="_on_options_pressed"]
