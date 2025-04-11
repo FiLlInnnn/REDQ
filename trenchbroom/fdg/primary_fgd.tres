@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=3 format=3 uid="uid://cmei0lfloqkxu"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=8 format=3 uid="uid://cmei0lfloqkxu"]
 
 [ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_2rcb7"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_yfh52"]
+[ext_resource type="Resource" uid="uid://cvpk75es5vhax" path="res://trenchbroom/fdg/entities/player/player.tres" id="2_hysdf"]
+[ext_resource type="Resource" uid="uid://co8gp2lsemfjn" path="res://trenchbroom/fdg/entities/zombie/zombie.tres" id="3_6fp37"]
+[ext_resource type="Resource" uid="uid://baufdjp76n07v" path="res://trenchbroom/fdg/entities/zombie/zombie_boss.tres" id="4_p182a"]
+[ext_resource type="Resource" uid="uid://dop0jhfhmwa2q" path="res://trenchbroom/fdg/entities/trigger/trigger.tres" id="5_kl2qp"]
+[ext_resource type="Resource" uid="uid://curuka55gbq3e" path="res://trenchbroom/fdg/entities/mover/mover.tres" id="6_lly4a"]
 
 [resource]
 script = ExtResource("1_yfh52")
@@ -9,4 +14,4 @@ export_file = false
 target_map_editor = 1
 fgd_name = "redq"
 base_fgd_files = Array[Resource]([ExtResource("1_2rcb7")])
-entity_definitions = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("2_hysdf"), ExtResource("3_6fp37"), ExtResource("4_p182a"), ExtResource("5_kl2qp"), ExtResource("6_lly4a")])

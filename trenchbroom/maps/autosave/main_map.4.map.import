@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://b1scloighpamx"
+path="res://.godot/imported/main_map.4.map-8eab00cb185ae9ef07384afe12ad8df5.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/autosave/main_map.4.map"
+dest_files=["res://.godot/imported/main_map.4.map-8eab00cb185ae9ef07384afe12ad8df5.tres"]
+
+[params]
+
