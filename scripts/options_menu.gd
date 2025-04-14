@@ -56,6 +56,5 @@ func _on_back_pressed() -> void:
 		if menu:
 			menu.show()
 			print("Předchozí menu je teď viditelné:", menu)
-
-	# Vyčistíme seznam
+	
 	previous_menus.clear()

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvxts7vrx4qp8"]
+
+[ext_resource type="Texture2D" uid="uid://bobv03l6fb8qj" path="res://trenchbroom/textures/world/sus_doggo.png" id="1_ypnbl"]
+
+[resource]
+albedo_texture = ExtResource("1_ypnbl")
+metallic_specular = 0.0
+texture_filter = 2
