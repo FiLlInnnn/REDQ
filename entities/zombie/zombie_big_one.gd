@@ -3,7 +3,7 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var player_detected = false
-var health = 15
+var health = 30
 var damage = 30
 
 const SPEED = 2.0

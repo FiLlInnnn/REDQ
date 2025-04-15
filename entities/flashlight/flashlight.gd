@@ -9,6 +9,6 @@ func _input(event: InputEvent):
 
 func _process(delta):
 	if toggle == true:
-		$SpotLight3D.light_energy = 16
+		$SpotLight3D.light_energy = 10
 	else:
 		$SpotLight3D.light_energy = 0
