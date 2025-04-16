@@ -3,11 +3,11 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var player_detected = false
-var health = 30
+var health = 40
 var damage = 30
 
-const SPEED = 2.0
-const ATTACK_RANGE = 2
+const SPEED = 3.0
+const ATTACK_RANGE = 5
 const DETECTION_RADIUS = 10.0
 
 @export var player_path : NodePath

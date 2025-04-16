@@ -62,5 +62,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.05883e-07, 0, -2.05883e-07, 1, 0, 0, -4
 light_energy = 10.0
 light_volumetric_fog_energy = 0.1
 spot_range = 50.0
-spot_angle = 40.0
-spot_angle_attenuation = 2.0
+spot_angle_attenuation = 3.0
