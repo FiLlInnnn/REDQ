@@ -338,6 +338,21 @@ grow_vertical = 2
 texture = ExtResource("8_sxgpr")
 stretch_mode = 3
 
+[node name="hint" type="Label" parent="player_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -177.0
+offset_right = 296.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Need light? Press \"F\". But don’t waste it ...the DARK is patient."
+
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/restart_game" to="pause_menu_ui/pause_menu" method="_on_restart_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/options" to="pause_menu_ui/pause_menu" method="_on_options_pressed"]
