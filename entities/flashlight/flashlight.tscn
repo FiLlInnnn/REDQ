@@ -59,7 +59,20 @@ mesh = SubResource("ArrayMesh_sqeqx")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 2.05883e-07, 0, -2.05883e-07, 1, 0, 0, -4.47668)
-light_energy = 10.0
+light_energy = 0.0
 light_volumetric_fog_energy = 0.1
 spot_range = 50.0
 spot_angle_attenuation = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" index="0"]
+offset_left = 39.0
+offset_top = 38.0
+offset_right = 338.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.89059, 0.89059, 0.89059, 1)
+theme_override_font_sizes/font_size = 40
+max_value = 50000.0
+step = 1.0
+value = 50000.0

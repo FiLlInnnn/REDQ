@@ -75,6 +75,14 @@ collide_with_areas = true
 [node name="AimRayEnd" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.5)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0202855, 0)
+light_color = Color(0.99224, 0.528377, 0.421672, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.1
+light_cull_mask = 4293918724
+omni_range = 1.18788
+
 [node name="pause_menu_ui" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" type="Control" parent="pause_menu_ui"]
@@ -122,6 +130,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
 text = "RESUME GAME"
+
+[node name="restart_game" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
+text = "RESTART GAME"
 
 [node name="options" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
@@ -317,6 +339,7 @@ texture = ExtResource("8_sxgpr")
 stretch_mode = 3
 
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
+[connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/restart_game" to="pause_menu_ui/pause_menu" method="_on_restart_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/options" to="pause_menu_ui/pause_menu" method="_on_options_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/exit_game" to="pause_menu_ui/pause_menu" method="_on_exit_game_pressed"]
 [connection signal="pressed" from="dead_menu_ui/dead_menu/VBoxContainer/restart" to="dead_menu_ui/dead_menu" method="_on_restart_pressed"]

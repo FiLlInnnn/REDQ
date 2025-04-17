@@ -11,11 +11,14 @@ const SPEED = 3.0
 const ATTACK_RANGE = 2
 const DETECTION_RADIUS = 10.0
 
+var scale_changed = false
+
 @export var player_path : NodePath
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var detection_area = $Area3D
+@onready var detection_area_scale = $Area3D/CollisionShape3D
 
 
 
@@ -68,6 +71,10 @@ func _on_player_entered(body):
 	if body.name == "player":
 		player_detected = true
 		print("Player entered detection area")
+		
+		if not scale_changed:
+			detection_area_scale.scale *= Vector3(2, 2, 2)
+			scale_changed = true
 
 func _on_player_exited(body):
 	if body.name == "player":
@@ -82,6 +89,8 @@ func _hit_finished():
 func _on_area_3d_body_part_hit(dam):
 	health -= dam
 	if  health <= 0:
+		collision_layer = 0
+		collision_mask = 0
 		velocity = Vector3.ZERO
 		nav_agent.set_target_position(global_transform.origin)
 		set_process(false)

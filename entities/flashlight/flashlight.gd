@@ -8,7 +8,13 @@ func _input(event: InputEvent):
 
 
 func _process(delta):
-	if toggle == true:
+	if toggle == true and $CanvasLayer/ProgressBar.value > 0 :
 		$SpotLight3D.light_energy = 10
 	else:
 		$SpotLight3D.light_energy = 0
+	
+	if $SpotLight3D.light_energy == 10:
+		$CanvasLayer/ProgressBar.value -= 1
+	#else:
+		#await get_tree().create_timer(5.0)
+		#$CanvasLayer/ProgressBar.value += 1
