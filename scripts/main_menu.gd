@@ -18,10 +18,9 @@ func _on_start_game_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	print("Kliknuto na Options v Main Menu")
-	$Panel.hide()
 	$VBoxContainer.hide()
 	$Label.hide()
-	options_menu.open([$VBoxContainer, $Label, $Panel])
+	options_menu.open([$VBoxContainer, $Label])
 
 
 func _on_exit_game_pressed() -> void:

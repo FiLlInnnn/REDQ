@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://clhe4d02xrbqu"]
+[gd_scene load_steps=16 format=3 uid="uid://clhe4d02xrbqu"]
 
 [ext_resource type="Script" path="res://entities/player/Player.gd" id="1_0qov8"]
 [ext_resource type="PackedScene" uid="uid://b481xxg7cawxg" path="res://entities/Gun/gun.tscn" id="2_uxl7l"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_ckxac"]
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="4_tlgvh"]
+[ext_resource type="FontFile" uid="uid://b76ir3piv2c3l" path="res://fonts/Spacerunner-Orange.otf" id="5_01car"]
 [ext_resource type="Script" path="res://scripts/dead_menu.gd" id="5_nsjfv"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="6_qgfsh"]
-[ext_resource type="Texture2D" uid="uid://d1i2kdiwc61qc" path="res://textures/crosshair_fixed_v2.png" id="7_xybm5"]
-[ext_resource type="Texture2D" uid="uid://26kbctuxn070" path="res://textures/crosshair_hit_v2.png" id="8_sxgpr"]
+[ext_resource type="Texture2D" uid="uid://c5mwn1uj14fo6" path="res://textures/crosshair_fixed_v3.png" id="7_xq4wf"]
+[ext_resource type="Texture2D" uid="uid://hosjwuckin77" path="res://textures/crosshair_fixed_hit_v3.png" id="8_e5mwq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_whugt"]
 
@@ -124,12 +125,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "RESUME GAME"
+text = "R E S U ME  G A ME"
 
 [node name="restart_game" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
@@ -138,12 +140,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "RESTART GAME"
+text = "R E S TA R T  G A ME"
 
 [node name="options" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
@@ -152,12 +155,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "OPTIONS"
+text = "O P TI O N S"
 
 [node name="exit_game" type="Button" parent="pause_menu_ui/pause_menu/VBoxContainer"]
 layout_mode = 2
@@ -166,12 +170,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "MAIN MENU"
+text = "MA I N  ME N U"
 
 [node name="Label" type="Label" parent="pause_menu_ui/pause_menu"]
 z_index = 2
@@ -179,15 +184,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -121.0
-offset_top = 30.0
-offset_right = 121.0
-offset_bottom = 124.0
+offset_left = -433.0
+offset_top = 127.0
+offset_right = 433.0
+offset_bottom = 222.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
-theme_override_font_sizes/font_size = 70
-text = "PAUSE MENU
+theme_override_fonts/font = ExtResource("5_01car")
+theme_override_font_sizes/font_size = 100
+text = "P A U S E  ME N U
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -237,12 +242,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "RESTART
+text = "R E S TA R T
 "
 
 [node name="main_menu" type="Button" parent="dead_menu_ui/dead_menu/VBoxContainer"]
@@ -252,12 +258,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_01car")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8rcxn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rflo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_r872a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ng4fv")
-text = "MAIN MENU"
+text = "MA I N  ME N U"
 
 [node name="Label" type="Label" parent="dead_menu_ui/dead_menu"]
 z_index = 2
@@ -267,17 +274,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -201.0
-offset_right = 174.0
-offset_bottom = -114.0
+offset_left = -237.0
+offset_top = -278.0
+offset_right = 237.0
+offset_bottom = -191.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 8
-theme_override_font_sizes/font_size = 70
-text = "YOU DIED
+theme_override_fonts/font = ExtResource("5_01car")
+theme_override_font_sizes/font_size = 100
+text = "Y O U  D I E D
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -319,7 +324,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_xybm5")
+texture = ExtResource("7_xq4wf")
 stretch_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="player_ui"]
@@ -335,7 +340,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_sxgpr")
+texture = ExtResource("8_e5mwq")
 stretch_mode = 3
 
 [node name="hint" type="Label" parent="player_ui"]

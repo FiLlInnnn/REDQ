@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drc81uvnh0r0u"]
+[gd_scene load_steps=7 format=3 uid="uid://drc81uvnh0r0u"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_w78lq"]
+[ext_resource type="FontFile" uid="uid://b76ir3piv2c3l" path="res://fonts/Spacerunner-Orange.otf" id="2_p2thu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h43cd"]
 
@@ -221,12 +222,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p2thu")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h43cd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dt05a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lyr04")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5u8be")
-text = "BACK"
+text = "B A C K"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/masterV" to="." method="_on_master_v_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/musicV" to="." method="_on_music_v_value_changed"]

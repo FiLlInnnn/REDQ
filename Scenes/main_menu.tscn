@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://eio5irjaq6eb"]
+[gd_scene load_steps=10 format=3 uid="uid://eio5irjaq6eb"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ba08b"]
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="2_hue6h"]
+[ext_resource type="Texture2D" uid="uid://c427r10h66cgm" path="res://textures/bck.png" id="2_sufdd"]
+[ext_resource type="FontFile" uid="uid://d0aj0t0pyx4qx" path="res://fonts/Spacerunner-Orange-Tight.otf" id="3_i64gx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6wej"]
+texture = ExtResource("2_sufdd")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsbua"]
 
@@ -69,9 +72,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -225.0
-offset_top = -137.0
+offset_top = 2.0
 offset_right = 225.0
-offset_bottom = 217.0
+offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -83,12 +86,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i64gx")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wsbua")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wvdql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oa3u0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0s2h7")
-text = "START GAME"
+text = "S TA R T  G A ME"
 
 [node name="options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -97,12 +101,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i64gx")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wsbua")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wvdql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oa3u0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0s2h7")
-text = "OPTIONS"
+text = "O P T I O N S"
 
 [node name="exit_game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -111,27 +116,27 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i64gx")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wsbua")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wvdql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oa3u0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0s2h7")
-text = "EXIT GAME"
+text = "E X I T  G A ME"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -121.0
-offset_top = 30.0
-offset_right = 121.0
-offset_bottom = 124.0
+offset_left = -277.5
+offset_top = 160.0
+offset_right = 277.5
+offset_bottom = 274.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 10
-theme_override_font_sizes/font_size = 70
-text = "REDQ
+theme_override_fonts/font = ExtResource("3_i64gx")
+theme_override_font_sizes/font_size = 200
+text = "R E D Q
 "
 horizontal_alignment = 1
 vertical_alignment = 1
