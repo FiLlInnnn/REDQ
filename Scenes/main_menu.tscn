@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://eio5irjaq6eb"]
+[gd_scene load_steps=11 format=3 uid="uid://eio5irjaq6eb"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ba08b"]
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="2_hue6h"]
 [ext_resource type="Texture2D" uid="uid://c427r10h66cgm" path="res://textures/bck.png" id="2_sufdd"]
 [ext_resource type="FontFile" uid="uid://d0aj0t0pyx4qx" path="res://fonts/Spacerunner-Orange-Tight.otf" id="3_i64gx"]
+[ext_resource type="FontFile" uid="uid://b76ir3piv2c3l" path="res://fonts/Spacerunner-Orange.otf" id="5_clejr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6wej"]
 texture = ExtResource("2_sufdd")
@@ -11,7 +12,7 @@ texture = ExtResource("2_sufdd")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsbua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvdql"]
-bg_color = Color(0.617454, 0.617455, 0.617454, 1)
+bg_color = Color(0.592157, 0.105882, 0.101961, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -21,7 +22,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa3u0"]
-bg_color = Color(0.355314, 0.355314, 0.355313, 1)
+bg_color = Color(0.323209, 0.0383824, 0.036746, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -31,7 +32,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0s2h7"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.110638, 0.124065, 0.170136, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -134,7 +135,7 @@ offset_top = 160.0
 offset_right = 277.5
 offset_bottom = 274.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_i64gx")
+theme_override_fonts/font = ExtResource("5_clejr")
 theme_override_font_sizes/font_size = 200
 text = "R E D Q
 "

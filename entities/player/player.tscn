@@ -18,7 +18,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rcxn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rflo"]
-bg_color = Color(0.617454, 0.617455, 0.617454, 1)
+bg_color = Color(0.592157, 0.105882, 0.101961, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -28,7 +28,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r872a"]
-bg_color = Color(0.355314, 0.355314, 0.355313, 1)
+bg_color = Color(0.321569, 0.0392157, 0.0352941, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -38,7 +38,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng4fv"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.109804, 0.12549, 0.168627, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -66,6 +66,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67983, 0)
 
 [node name="gun2" parent="Head/Camera3D" instance=ExtResource("2_uxl7l")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.210901, -0.398335, -0.636837)
+
+[node name="sfx_shoot" type="AudioStreamPlayer3D" parent="Head/Camera3D/gun2"]
 
 [node name="Aimray" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.45795)
@@ -357,6 +359,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Need light? Press \"F\". But don’t waste it ...the DARK is patient."
+
+[node name="sfx_hit" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_walk" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/restart_game" to="pause_menu_ui/pause_menu" method="_on_restart_game_pressed"]

@@ -13,7 +13,9 @@ config_version=5
 config/name="FPS x DOOM x PS2 RE"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://textures/logo2.png"
+config/icon="res://textures/q2.png"
 
 [autoload]
 
@@ -22,6 +24,7 @@ GlobalOptions="*res://scripts/GlobalOptions.gd"
 [display]
 
 window/size/mode=3
+mouse_cursor/custom_image="res://textures/cursor2.png"
 
 [editor_plugins]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://phno82ic5yyp"]
+[gd_scene load_steps=14 format=4 uid="uid://phno82ic5yyp"]
 
 [ext_resource type="PackedScene" uid="uid://cajmdfbmgwctw" path="res://entities/flashlight/flashlight.glb" id="1_dbx4m"]
 [ext_resource type="Texture2D" uid="uid://ccs3qois2rix7" path="res://entities/flashlight/Untitled_BaseColor.png" id="2_4d6vm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://gyyhf6uvi3ac" path="res://entities/flashlight/Untitled_Metallic.png" id="4_8ko06"]
 [ext_resource type="Texture2D" uid="uid://ciogw4f7nrcjv" path="res://entities/flashlight/Untitled_NormalMap.png" id="5_tynve"]
 [ext_resource type="Texture2D" uid="uid://bynpstjdl8me0" path="res://entities/flashlight/Untitled_Roughness.png" id="6_yewah"]
+[ext_resource type="AudioStream" uid="uid://vvusujwbf35x" path="res://audio/battery_switch_sfx2.wav" id="8_3qrgy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwdbd"]
 albedo_texture = ExtResource("2_4d6vm")
@@ -50,6 +51,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eplgo")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iay5t"]
+bg_color = Color(0.6, 0.6, 0.6, 0.470588)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nwj6"]
+bg_color = Color(0.741176, 0.721569, 0.00392157, 0.631373)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="flashlight" instance=ExtResource("1_dbx4m")]
 script = ExtResource("2_qbb1l")
 
@@ -71,8 +92,15 @@ offset_left = 39.0
 offset_top = 38.0
 offset_right = 338.0
 offset_bottom = 97.0
-theme_override_colors/font_color = Color(0.89059, 0.89059, 0.89059, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_iay5t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1nwj6")
 max_value = 20000.0
 step = 1.0
 value = 20000.0
+
+[node name="sfx_battery_switch" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("8_3qrgy")
+pitch_scale = 1.68
+bus = &"sfx"

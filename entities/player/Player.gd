@@ -27,6 +27,11 @@ var instance
 
 var hp = 100
 
+#walk sfx
+var walk_timer := 0.0
+const STEP_INTERVAL_WALK = 0.4
+
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 
@@ -40,6 +45,9 @@ var hp = 100
 @onready var hp_label = $player_ui/HP_label
 
 @onready var crosshair_hit = $player_ui/TextureRect2
+
+
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -104,6 +112,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+	_handle_footsteps(delta)
 
 
 
@@ -118,6 +127,7 @@ func _headbob(time) -> Vector3:
 
 
 func hit(dir, damage):
+	$sfx_hit.play()
 	emit_signal("player_hit")
 	hp -= damage
 	hp = max(hp, 0)
@@ -154,6 +164,7 @@ func toggle_pause():
 func _shoot_pistol():
 	if !gun_anim.is_playing():
 		gun_anim.play("shoot")
+		$Head/Camera3D/gun2/sfx_shoot.play()
 		instance = bullet.instantiate()
 		instance.position = gun_barrel.global_position
 		get_parent().add_child(instance)
@@ -169,3 +180,19 @@ func _on_zombie_hit():
 	crosshair_hit.visible = true
 	await get_tree().create_timer(0.05).timeout
 	crosshair_hit.visible = false
+
+
+func _handle_footsteps(delta):
+	if is_on_floor() and velocity.length() > 0.1:
+		walk_timer += delta
+		
+		var interval = STEP_INTERVAL_WALK
+		if speed == SPRINT_SPEED:
+			interval = STEP_INTERVAL_WALK * 0.5 
+		
+		if walk_timer >= interval:
+			walk_timer = 0.0
+			$sfx_walk.play()  
+		
+	else:
+		walk_timer = 0.0

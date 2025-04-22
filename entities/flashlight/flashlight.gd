@@ -4,6 +4,7 @@ var toggle = false
 
 func _input(event: InputEvent):
 	if Input.is_action_just_pressed("flashlight"):
+		$sfx_battery_switch.play()
 		toggle = !toggle
 
 

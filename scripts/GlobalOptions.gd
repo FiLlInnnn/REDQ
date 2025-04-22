@@ -34,7 +34,7 @@ func get_music_volume():
  
 func set_sfx_volume(value):
 	sfx_volume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear_to_db(value))
 	save_settings()
  
 func get_sfx_volume():

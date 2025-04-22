@@ -94,6 +94,7 @@ func _on_area_3d_body_part_hit(dam):
 		nav_agent.set_target_position(global_transform.origin)
 		set_process(false)
 		anim_tree.set("parameters/conditions/dead", true)
+		#$sfx_death.play()
 		await get_tree().create_timer(1.0).timeout
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 		get_tree().paused = true
