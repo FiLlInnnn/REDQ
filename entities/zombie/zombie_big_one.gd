@@ -12,6 +12,8 @@ const DETECTION_RADIUS = 10.0
 
 var scale_changed = false
 
+var is_dead = false
+
 @export var player_path : NodePath
 
 @onready var nav_agent = $NavigationAgent3D
@@ -86,15 +88,19 @@ func _hit_finished():
 
 
 func _on_area_3d_body_part_hit(dam):
+	if is_dead:
+		return
+	
 	health -= dam
 	if  health <= 0:
+		is_dead = true
 		collision_layer = 0
 		collision_mask = 0
 		velocity = Vector3.ZERO
 		nav_agent.set_target_position(global_transform.origin)
 		set_process(false)
 		anim_tree.set("parameters/conditions/dead", true)
-		#$sfx_death.play()
+		$sfx_death.play()
 		await get_tree().create_timer(1.0).timeout
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 		get_tree().paused = true

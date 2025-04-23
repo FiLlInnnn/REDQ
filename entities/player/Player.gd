@@ -31,6 +31,7 @@ var hp = 100
 var walk_timer := 0.0
 const STEP_INTERVAL_WALK = 0.4
 
+var is_dying = false
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -110,6 +111,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		_shoot_pistol()
 	
+	if is_dying:
+		return
 	
 	move_and_slide()
 	_handle_footsteps(delta)
@@ -127,6 +130,10 @@ func _headbob(time) -> Vector3:
 
 
 func hit(dir, damage):
+	
+	if is_dying:
+		return
+	
 	$sfx_hit.play()
 	emit_signal("player_hit")
 	hp -= damage
@@ -135,6 +142,7 @@ func hit(dir, damage):
 	
 	if hp <= 0:
 		die()
+		is_dying = true
 	else:
 		velocity += dir * HIT_STAGGER
 

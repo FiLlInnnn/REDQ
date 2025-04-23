@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://clhe4d02xrbqu"]
+[gd_scene load_steps=18 format=3 uid="uid://clhe4d02xrbqu"]
 
 [ext_resource type="Script" path="res://entities/player/Player.gd" id="1_0qov8"]
 [ext_resource type="PackedScene" uid="uid://b481xxg7cawxg" path="res://entities/Gun/gun.tscn" id="2_uxl7l"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_ckxac"]
+[ext_resource type="AudioStream" uid="uid://jfwqvgyg0v1y" path="res://audio/shoot5_sfx.wav" id="3_x1g7v"]
 [ext_resource type="PackedScene" uid="uid://drc81uvnh0r0u" path="res://Scenes/options_menu.tscn" id="4_tlgvh"]
 [ext_resource type="FontFile" uid="uid://b76ir3piv2c3l" path="res://fonts/Spacerunner-Orange.otf" id="5_01car"]
 [ext_resource type="Script" path="res://scripts/dead_menu.gd" id="5_nsjfv"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="6_qgfsh"]
 [ext_resource type="Texture2D" uid="uid://c5mwn1uj14fo6" path="res://textures/crosshair_fixed_v3.png" id="7_xq4wf"]
 [ext_resource type="Texture2D" uid="uid://hosjwuckin77" path="res://textures/crosshair_fixed_hit_v3.png" id="8_e5mwq"]
+[ext_resource type="AudioStream" uid="uid://b4ow1o1mcmyle" path="res://audio/uff3_sfx.wav" id="10_pet2v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_whugt"]
 
@@ -68,6 +70,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67983, 0)
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.210901, -0.398335, -0.636837)
 
 [node name="sfx_shoot" type="AudioStreamPlayer3D" parent="Head/Camera3D/gun2"]
+stream = ExtResource("3_x1g7v")
+volume_db = -20.0
+max_db = 1.0
+pitch_scale = 1.2
+bus = &"sfx"
 
 [node name="Aimray" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.45795)
@@ -361,6 +368,8 @@ theme_override_font_sizes/font_size = 20
 text = "Need light? Press \"F\". But don’t waste it ...the DARK is patient."
 
 [node name="sfx_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pet2v")
+bus = &"sfx"
 
 [node name="sfx_walk" type="AudioStreamPlayer" parent="."]
 

@@ -102,5 +102,6 @@ value = 20000.0
 
 [node name="sfx_battery_switch" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("8_3qrgy")
+volume_db = -25.0
 pitch_scale = 1.68
 bus = &"sfx"
