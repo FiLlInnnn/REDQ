@@ -32,6 +32,7 @@ var walk_timer := 0.0
 const STEP_INTERVAL_WALK = 0.4
 
 var is_dying = false
+var is_starting_walk = false
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -191,16 +192,27 @@ func _on_zombie_hit():
 
 
 func _handle_footsteps(delta):
-	if is_on_floor() and velocity.length() > 0.1:
+	if is_on_floor() and _is_moving_input():
 		walk_timer += delta
 		
 		var interval = STEP_INTERVAL_WALK
 		if speed == SPRINT_SPEED:
-			interval = STEP_INTERVAL_WALK * 0.5 
+			interval *= 0.5
 		
 		if walk_timer >= interval:
 			walk_timer = 0.0
-			$sfx_walk.play()  
+			
+			if not $sfx_walk.playing:
+				if not is_starting_walk:
+					is_starting_walk = true
+					await get_tree().create_timer(0.05).timeout
+				$sfx_walk.play()
 		
 	else:
 		walk_timer = 0.0
+		is_starting_walk = false
+		if $sfx_walk.playing:
+			$sfx_walk.stop()
+
+func _is_moving_input() -> bool:
+		return Input.is_action_pressed("fwd") or Input.is_action_pressed("bwd") or Input.is_action_pressed("left") or Input.is_action_pressed("right")

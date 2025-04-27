@@ -36,6 +36,7 @@ func open():
 		return
 	is_open = true
 	
+	$door_sfx.play()
 	var door_body = get_node_or_null("DoorBody")
 	if door_body:
 		door_body.collision_layer = 1 << 1 

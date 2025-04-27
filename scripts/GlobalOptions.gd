@@ -26,7 +26,7 @@ func get_master_volume():
  
 func set_music_volume(value):
 	music_volume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear_to_db(value))
 	save_settings()
 
 func get_music_volume():

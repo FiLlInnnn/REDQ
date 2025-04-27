@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://clhe4d02xrbqu"]
+[gd_scene load_steps=19 format=3 uid="uid://clhe4d02xrbqu"]
 
 [ext_resource type="Script" path="res://entities/player/Player.gd" id="1_0qov8"]
 [ext_resource type="PackedScene" uid="uid://b481xxg7cawxg" path="res://entities/Gun/gun.tscn" id="2_uxl7l"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c5mwn1uj14fo6" path="res://textures/crosshair_fixed_v3.png" id="7_xq4wf"]
 [ext_resource type="Texture2D" uid="uid://hosjwuckin77" path="res://textures/crosshair_fixed_hit_v3.png" id="8_e5mwq"]
 [ext_resource type="AudioStream" uid="uid://b4ow1o1mcmyle" path="res://audio/uff3_sfx.wav" id="10_pet2v"]
+[ext_resource type="AudioStream" uid="uid://biw1hm867w1vb" path="res://audio/walk_sfx.wav" id="12_ke872"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_whugt"]
 
@@ -372,6 +373,9 @@ stream = ExtResource("10_pet2v")
 bus = &"sfx"
 
 [node name="sfx_walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ke872")
+pitch_scale = 1.2
+bus = &"sfx"
 
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/start_game" to="pause_menu_ui/pause_menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="pause_menu_ui/pause_menu/VBoxContainer/restart_game" to="pause_menu_ui/pause_menu" method="_on_restart_game_pressed"]

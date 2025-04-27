@@ -96,9 +96,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_iay5t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1nwj6")
-max_value = 20000.0
+max_value = 10000.0
 step = 1.0
-value = 20000.0
+value = 10000.0
 
 [node name="sfx_battery_switch" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("8_3qrgy")

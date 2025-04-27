@@ -38,6 +38,7 @@ func open():
 		return
 	is_open = true
 	
+	$door_sfx.play()
 	var door_body = get_node_or_null("DoorBody")
 	if door_body:
 		door_body.collision_layer = 1 << 1 
@@ -49,6 +50,8 @@ func open():
 
 func close():
 	if is_open:
+		$door_sfx.pitch_scale = 1.4
+		$door_sfx.play()
 		var door_body = get_node_or_null("DoorBody")
 		if door_body:
 			door_body.collision_layer = (1 << 0) | (1 << 1)
