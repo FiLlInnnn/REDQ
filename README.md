@@ -1,4 +1,4 @@
-# RocnikovaPrace
+# REDQ
 REDQ je FPS ve stylu DOOMU 64 a QUAKE.
 Pro vývoj byl požit GODOT.
 
